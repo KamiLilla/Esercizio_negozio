@@ -39,15 +39,94 @@ Funzione che permette di acquisite da input utente un prodotto acquistato dal ne
         Product= oggetto appartenente alla classe Product
 '''
             
-def new_product():
-    name=input('Nome del prodotto: ')
-    quantity=int(input('Quantità: '))
-    cost=float(input('Prezzo di acquisto: '))
-    sale_price=float(input('Prezzo di vendita: '))
+def new_product(product_storage):
+    
+    name=str(input('Nome del prodotto: '))
+   
+    check=is_in_storage(product_storage,name)
+    
+    if check is True:
+        try:
+            quantity=int(input('Quantità: '))
+            while quantity<0:
+                print('Inserire quantità valida')
+                quantity=int(input('Quantità: '))
+
+        except ValueError as e:
+            print(e)
+            quantity=int(input('Quantità: '))
+
+            while type(quantity)!= int or quantity<0:
+                print('Inserire quantità valida')
+                quantity=int(input('Quantità: '))
+
+        cost=product_storage[name]['prezzo di acquisto']  
+        sale_price=product_storage[name]['prezzo di vendita']
+
+    else:
+        
+        try:
+            quantity=int(input('Quantità: '))
+            while quantity<0:
+                print('Inserire quantità valida')
+                quantity=int(input('Quantità: '))
+
+        except ValueError as e:
+            print(e)
+            quantity=int(input('Quantità: '))
+
+            while type(quantity)!= int or quantity<0:
+                print('Inserire quantità valida')
+                quantity=int(input('Quantità: '))
+
+        try:    
+            cost=float(input('Prezzo di acquisto: '))
+            while cost<0:
+                print('Inserire prezzo di acquisto valido')
+                cost=float(input('Prezzo di acquisto: '))
+        
+        except ValueError as e:
+            print(e)
+            cost=float(input('Prezzo di acquisto: '))
+
+            while type(cost)!= float or cost<0:
+                print('Inserire costo valido')
+                cost=float(input('Prezzo di acquisto: '))
+        
+        try:
+            sale_price=float(input('Prezzo di vendita: '))
+            while sale_price<0:
+                print('Inserire prezzo di vendita valido')
+                sale_price=float(input('Prezzo di vendita: '))
+            
+        except ValueError as e:
+            print(e)
+            sale_price=float(input('Prezzo di vendita: '))
+            while type(sale_price)!= float or sale_price<0:
+                print('Inserire prezzo valido')
+                sale_price=float(input('Prezzo di vendita: '))
    
     register_cost(name,quantity,cost)
         
     return Product(name,quantity,sale_price,cost)
+
+
+
+'''
+Funzione di controllo presenza in magazzino del prodotto aggiunto dall'utente
+    ARGOMENTI:
+        product_storage= dizionario contenente tutti i prodotti presenti in magazzino
+        name= nome del prodotto da cercare
+    return:
+        boolean True or False
+
+'''
+def is_in_storage(product_storage,name):
+    storage=list(product_storage.keys())
+    if name in storage:
+        return True
+    
+    return False
 
 
 
