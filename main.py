@@ -28,9 +28,9 @@ def main():
                 sale(storehouse)
 
             if user_command=='profitti':
-                gross_profit=gross_profit()
+                gross_profit= calculate_gross_profit()
                 costs=total_costs(storehouse)
-                net_profit=net_profit(gross_profit,costs)
+                net_profit= calculate_net_profit(gross_profit,costs)
 
     register_items(storehouse)
 
