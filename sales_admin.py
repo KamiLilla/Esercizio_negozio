@@ -9,8 +9,22 @@ Implementazione funzione per acuisire in inptu il prodotto da vendere.
 
 def sell_item():
     item=input('Nome del prodotto: ')
-    quantity=int(input('Quantità: '))
+    try:
+        quantity=int(input('Quantità: '))
+        while quantity<0:
+            print('Inserire quantità valida')
+            quantity=int(input('Quantità: '))
+
+    except ValueError as e:
+        print(e)
+        quantity=int(input('Quantità: '))
+
+        while type(quantity)!= int:
+            print('Inserire quantità valida')
+            quantity=int(input('Quantità: '))
+    
     return (item,quantity)
+
 
 
 '''
