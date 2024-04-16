@@ -5,7 +5,7 @@ Implementazione funzione di calcolo del profitto lordo del negozio. Il calcolo a
 '''
 
 
-def gross_profit():
+def calculate_gross_profit():
     gross_profit=0
     with open ('total_sales_registry.txt','r') as sales:
         for sale in (sales.readlines()):
@@ -24,7 +24,7 @@ Implementazione funzione di calcolo del profitto netto del negozio. Il profitto 
 '''
 
 
-def net_profit(gross,costs):
+def calculate_net_profit(gross,costs):
     net_profit=float(gross-costs)
     print (f'Profitti: lordo= {gross:.2f} netto= {net_profit:.2f}')
            
